@@ -65,7 +65,11 @@ const handlesearch =(e)=>{
               body.append("image", image);
               const result = await dispatch(createProductAction(body))
               console.log("result create",result);
-              dispatch(getAllProductAction())
+              const param ={
+                search:"",
+                page:1
+            }
+              await dispatch(getAllProductAction(param))
               setOpen(false)
               
               // for (var pair of body.entries())

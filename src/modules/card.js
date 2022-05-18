@@ -56,8 +56,12 @@ export default function MediaCard(item) {
   };
   const handleDelete = async () => {
     try {
+        const param ={
+            search:"",
+            page:1
+        }
       await dispatch(deleteProductAction(id));
-      await dispatch(getAllProductAction());
+      await dispatch(getAllProductAction(param));
       setOpenModal2(false);
     } catch (error) {
       console.log(error);
@@ -80,8 +84,12 @@ export default function MediaCard(item) {
         body.append("image", imageSent);
         const result = await dispatch(updateProductAction(body, id));
         //   console.log("result create",result);
-        dispatch(getAllProductAction());
-
+        const param ={
+            search:"",
+            page:1
+        }
+        await dispatch(getAllProductAction(param));
+        setOpen(false)
         //   for (var pair of body.entries())
         //   {
         //    console.log(pair[0]+ ', '+ pair[1]);
@@ -124,7 +132,7 @@ export default function MediaCard(item) {
           color="text.secondary"
           sx={{ mb: 0 }}
         >
-          Stock = {vStock}
+          Stock = {vStock} pcs
         </Typography>
       </CardContent>
       <CardActions
