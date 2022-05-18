@@ -8,7 +8,7 @@ export const getProductById = (id) => {
   export const getAllProduct = (param) => {
       const queryParam ={
           search:param.search??"",
-          per_page:param.per_page ?? 4,
+          per_page:param.per_page ?? 8,
           page: param.page ?? 1
       }
       console.log(queryParam);
